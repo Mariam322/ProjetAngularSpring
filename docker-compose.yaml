@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   web:
-    image: houssem52/Angular-cicd:latest
+    image: houssem52/angular-cicd:latest
     container_name: cont-angular
     ports:
       - "4200:4200"
@@ -10,7 +10,7 @@ services:
       - back
 
   back:
-    image: houssem52/Spring-cicd:latest
+    image: houssem52/spring-cicd:latest
     container_name: cont-spring
     ports:
       - "8070:8070"
