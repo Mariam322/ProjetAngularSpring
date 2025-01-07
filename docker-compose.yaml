@@ -1,0 +1,16 @@
+version: '3.3'
+
+services:
+  web:
+    image: houssem52/Angular-cicd:latest
+    container_name: cont-angular
+    ports:
+      - "4200:4200"
+    depends_on:
+      - back
+
+  back:
+    image: houssem52/Spring-cicd:latest
+    container_name: cont-spring
+    ports:
+      - "8070:8070"
