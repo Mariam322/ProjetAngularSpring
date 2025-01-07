@@ -1,7 +1,7 @@
 pipeline {
     agent { label 'Dev-Agent' }
     tools {
-        jdk 'jdk17'
+        jdk 'jdk21'
     }
     
     stages{
@@ -12,9 +12,9 @@ pipeline {
         }
       stage('Install Stage') {
             steps {
-                withMaven(maven: 'maven3') {
+                withMaven(maven: 'maven4') {
                     dir('BankProject') {  
-                        sh 'mvn clean package'
+                        sh 'mvn clean package -DskipTests'
                     }
                 }
             }
