@@ -3,7 +3,7 @@ FROM node:16
 RUN npm install -g @angular/cli 
 
 
-RUN npm install
+RUN npm cache clean --force && npm install
 
 COPY . .
 
