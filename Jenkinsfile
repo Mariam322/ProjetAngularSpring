@@ -21,12 +21,12 @@ pipeline {
         }
         stage('Build imageFront'){
             steps {
-                sh 'docker build ./BankprojetFront/ -t houssem52/Angular-cicd:latest'
+                sh 'docker build ./BankprojetFront/ -t houssem52/angular-cicd:latest'
             }
         }
              stage('Build imageBack'){
             steps {
-                sh 'docker build ./BankProject/ -t houssem52/Spring-cicd:latest'
+                sh 'docker build ./BankProject/ -t houssem52/spring-cicd:latest'
             }
         }
         stage('Login and Push Image'){
