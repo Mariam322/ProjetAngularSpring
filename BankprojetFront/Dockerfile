@@ -1,12 +1,23 @@
+# Utiliser une image officielle Node.js stable
 FROM node:16
 
-RUN npm install -g @angular/cli 
+# Définir le répertoire de travail
+WORKDIR /app
 
+# Installer Angular CLI globalement
+RUN npm install -g @angular/cli
 
-RUN npm cache clean --force && npm install
+# Copier uniquement les fichiers nécessaires pour l'installation des dépendances
+COPY package.json package-lock.json ./
 
+# Nettoyer le cache et installer les dépendances
+RUN npm cache clean --force && npm install --legacy-peer-deps
+
+# Copier le reste des fichiers du projet dans le conteneur
 COPY . .
 
+# Exposer le port par défaut utilisé par Angular
 EXPOSE 4200
 
-CMD ng serve
+# Commande pour démarrer le serveur Angular
+CMD ["ng", "serve", "--host", "0.0.0.0"]
