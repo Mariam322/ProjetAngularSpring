@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<header class="section-header">
+  <h3 class="section-title" style="margin-top: -10px;margin-left: 150px;">
+    Comptes bancaires du client {{ ClientsID }}
+  </h3>
+</header>
+
+<div class="container mt-7">
+    <!-- Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header border-0">
+            
+          
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col" style="color:black;font-size: medium;">RIB</th>
+                  <th scope="col" style="color:black;font-size: medium;">Solde</th>
+                  <th scope="col" style="color:black;font-size: medium;">Date de création</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let compte of comptes">
+                  <td>{{ compte.rib }}</td>
+                  <td>{{ compte.solde  }} DT</td>
+                  <td>{{ compte.createdAt | date: 'dd/MM/yyyy' }}</td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

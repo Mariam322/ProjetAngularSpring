@@ -1,0 +1,48 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark shadow">
+  <div class="container d-flex justify-content-between align-items-center">
+
+      <a class="navbar-brand text-success logo h1 align-self-center" href="index.html" style="margin-left: -100px;">
+        BankEase
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+          <div class="flex-fill">
+              <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                  <li class="nav-item"*ngIf="authser.isAuthenticated">
+                      <a class="nav-link" routerLink="/client" style="color: black;">client</a>
+                  </li>
+                  <li class="nav-item"*ngIf="authser.isAuthenticated">
+                      <a class="nav-link" routerLink="/comptes"style="color: black;">comptes</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="shop.html"style="color: black;"></a>
+                  </li>
+                
+              
+              <ul class="navbar" *ngIf="authser.isAuthenticated">
+                <li class="nav-item">
+                 <a class="nav-link active" style="color:black">   {{this.authser.username}}</a>
+                </li>
+                <li>
+                    <button (click)="logout()" class="btn btn-success">logout</button>
+                </li>
+              </ul>
+              <ul class="navbar-nav" *ngIf="!authser.isAuthenticated">
+                <li class="nav-item">
+                  <a class="nav-link active" style="color:black">{{ authser.username }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login" style="color: black;">Login</a>                </li>
+            </ul>
+            </ul>
+          </div>
+          
+</div>
+</div>
+</nav>
+<!-- Close Header -->

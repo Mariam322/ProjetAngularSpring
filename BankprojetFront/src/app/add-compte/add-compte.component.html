@@ -1,0 +1,61 @@
+<div class="modal-backdrop">
+  <div class="container">
+    <div class="text" style="text-align: center; font-size: 41px; font-family: 'Times New Roman', Times, serif;">
+      Comptes
+    </div>
+    <form [formGroup]="internForm" (ngSubmit)="onSubmit()">
+      <div class="controls">
+        <!-- Sélection du client -->
+        <div class="form-group">
+          <label for="client_id">Select your client *</label>
+          <select class="form-control" formControlName="clientid">
+            <option *ngIf="!listeClients.length">Aucun client disponible</option>
+            <option *ngFor="let client of listeClients" [value]="client.id">
+              {{ client.id }} -{{client.nom}}
+            </option>
+          </select>
+        </div>
+
+        <!-- Solde -->
+        <div class="form-group">
+          <label for="form_solde">Solde *</label>
+          <input
+            id="form_solde"
+            type="number"
+            formControlName="solde"
+            class="form-control"
+            placeholder="Enter solde"
+            required="required"
+          />
+          <div *ngIf="formSubmitted && internForm.get('solde')?.invalid" class="text-danger">
+            <div *ngIf="internForm.get('solde')?.errors?.['required']">Solde est obligatoire.</div>
+            <div *ngIf="internForm.get('solde')?.errors?.['minlength']">
+              Le solde doit comporter au moins 2 chiffres.
+            </div>
+          </div>
+        </div>
+
+        <!-- Date de création -->
+        <div class="form-group">
+          <label for="form_createdAt">Date de création *</label>
+          <input
+            id="form_createdAt"
+            type="date"
+            formControlName="createdAt"
+            class="form-control"
+            required="required"
+          />
+          <div *ngIf="formSubmitted && internForm.get('createdAt')?.invalid" class="text-danger">
+            La date de création est obligatoire.
+          </div>
+        </div>
+
+        <!-- Boutons -->
+        <div class="col-md-12" style="margin-top: 20px; text-align: center;">
+          <input type="submit" class="btn btn-success btn-send" value="Confirm" />
+          <input type="button" class="btn btn-secondary btn-send" value="Close" (click)="close()" />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

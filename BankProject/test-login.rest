@@ -1,0 +1,4 @@
+POST http://localhost:8085/auth/login
+Content-Type: application/x-www-form-urlencoded
+
+username=user1&password=12345

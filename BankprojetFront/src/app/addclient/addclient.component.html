@@ -1,0 +1,50 @@
+<div class="modal-backdrop">
+  <div class="container">
+<div class="text" style="text-align: center; font-size: 41px; font-family:'Times New Roman', Times, serif;">Clients</div>
+  
+  <form [formGroup]="internForm" (ngSubmit)="onSubmit()">
+    <div class="controls">
+      <!-- Champ pour le nom -->
+      <div class="form-group">
+        <label for="form_name">Nom Client *</label>
+        <input
+          id="form_name"
+          type="text"
+          formControlName="nom"
+          class="form-control"
+          placeholder="Enter name of customer"
+          required="required"
+        />
+        <div *ngIf="formSubmitted && internForm.get('nom')?.invalid" class="text-danger">
+          <div *ngIf="internForm.get('nom')?.errors?.['required']">Nom client obligatoire.</div>
+          <div *ngIf="internForm.get('nom')?.errors?.['minlength']">
+            Le nom du client doit comporter au moins 2 caractères
+          </div>
+        </div>
+      </div>
+
+      <!-- Champ pour l'email -->
+      <div class="form-group">
+        <label for="form_email">Email *</label>
+        <input
+          id="form_email"
+          type="email"
+          formControlName="email"
+          class="form-control"
+          placeholder="Enter email"
+          required="required"
+        />
+        <div *ngIf="formSubmitted && internForm.get('email')?.invalid" class="text-danger">
+          <div *ngIf="internForm.get('email')?.errors?.['required']">Email is required.</div>
+          <div *ngIf="internForm.get('email')?.errors?.['email']">A valid email is required.</div>
+        </div>
+      </div>
+
+      <!-- Boutons -->
+      <div class="col-md-12" style="margin-top: 20px; margin-left: 270px;">
+        <input type="submit" class="btn btn-success btn-send" value="Confirm" />
+        <input type="button" class="btn btn-secondary btn-send" value="Close" (click)="close()" />
+      </div>
+    </div>
+  </form>
+</div>

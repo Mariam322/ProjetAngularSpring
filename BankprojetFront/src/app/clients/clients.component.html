@@ -1,0 +1,110 @@
+<app-navbar></app-navbar>
+<body>
+<div id="about">
+  <div class="container ">
+      <div class="row g-2">
+          <div class="col-md-10">
+              <div class="row g-2">
+                  <div class="col-md-4">
+                     
+
+                
+                    
+          </div>
+          </div>
+
+	  
+    <header class="section-header" >
+      <h3 class="section-title" style="margin-top: -50px;margin-left: 200px;">Nos Clients</h3>
+    </header> 
+    <li *ngIf="authser.roles.includes('ADMIN')">
+      <a (click)="open()" style="margin-left: 1000px;" class="btn btn-success">
+        <i class="fa fa-plus" title="add category"></i>
+        <span class="txt">Ajout Clients</span>
+      </a>
+    </li>
+
+  <div class="main-content" style="margin-left: -400px; width: 2000px;margin-top: -70px;">
+    <div class="container mt-7">
+      <!-- Table -->
+
+      <div class="row">
+        <div class="col">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <form [formGroup]="searchFomGroup" (ngSubmit)="search()">
+                <div class="search-bar d-flex align-items-center mb-3">
+                  <input
+                    type="text"
+                    formControlName="keyword"
+                    class="form-control"
+                    placeholder="Enter keyword"
+                    style="flex: 1; margin-right: 10px;"
+                  />
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i> Search
+                  </button>
+                </div>
+              </form>
+
+            </div>
+            
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col" style="color:black;font-size: medium;">Avatar</th>
+                    <th scope="col"style="color:black;font-size: medium;">Nom</th>
+                    <th scope="col"style="color:black;font-size: medium;">Email</th>
+                    <th scope="col"style="color:black;font-size: medium;">Action</th>
+                    <th scope="col"style="color:black;font-size: medium;">Comptes</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let c of listeClient">
+                    <th scope="row">
+                      <div class="media align-items-center">
+                        <a href="#" class="avatar rounded-circle mr-3">
+                          <img
+                            alt="Image placeholder"
+                            src="https://www.shutterstock.com/image-vector/default-avatar-profile-icon-vector-260nw-2271804793.jpg"
+                          />
+                        </a>
+                      </div>
+                    </th>
+                    <td>
+                      {{ c.nom }}
+                    </td>
+                    <td>
+                      {{ c.email }}
+                    </td>
+                    <td > 
+                      <a  (click)="confirmDelete(c.id)" class="link-details" title="Delete">
+                        <i style="color:red;font-size: 20px;margin-left: 10px;" class="fa fa-trash"></i>
+                      </a>
+                      <a  class="link-preview portfolio-lightbox"  data-gallery="portfolioGallery" title="Edit" (click)="onedit(c.id)">
+                        <i style="margin-left: 20px;color:green;font-size: 20px;" class="fa fa-pen"></i>
+                      </a>
+                    
+                    </td>
+                    <td > 
+                      <button (click)="handelClientAccount(c.id)" class="btn btn-success"> Comptes</button>
+                    
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
