@@ -13,7 +13,7 @@ pipeline {
       stage('Install Stage') {
             steps {
                 withMaven(maven: 'maven3') {
-                    dir('BankProject') {  // Indique le répertoire du projet backend
+                    dir('BankProject') {  
                         sh 'mvn clean package'
                     }
                 }
