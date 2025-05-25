@@ -21,12 +21,12 @@ pipeline {
         }
         stage('Build imageFront'){
             steps {
-                sh 'docker build ./BankprojetFront/ -t mariammseddi12/angular-cicd'
+                sh 'docker build ./BankprojetFront/ -t mariammseddi12 mariammseddi12/angular-cicd'
             }
         }
              stage('Build imageBack'){
             steps {
-                sh 'docker build ./BankProject/ -t mariammseddi12/spring-cicd'
+                sh 'docker build ./BankProject/ -t mariammseddi12 mariammseddi12/spring-cicd'
             }
         }
         stage('Login and Push Image'){
@@ -34,8 +34,8 @@ pipeline {
                 echo 'logging in to docker hub and pushing image..'
                 withCredentials([usernamePassword(credentialsId:'DockerHub',passwordVariable:'DockerHubPassword', usernameVariable:'DockerHubUsername')]) {
                     sh "docker login -u ${env.DockerHubUsername} -p ${env.DockerHubPassword}"
-                    sh "docker push mariammseddi12/angular-cicd:latest"
-                    sh "docker push mariammseddi12/spring-cicd:latest"
+                    sh "docker push mariammseddi12 mariammseddi12/angular-cicd:latest"
+                    sh "docker push mariammseddi12 mariammseddi12/spring-cicd:latest"
                 }    
             }
         }
