@@ -29,16 +29,16 @@ pipeline {
                 sh 'docker build ./BankProject/ -t mariammseddi12/spring-cicd'
             }
         }
-        stage('Login and Push Image'){
+        stage('Login and Push Image') {
             steps {
-                echo 'logging in to docker hub and pushing image..'
-                withCredentials([usernamePassword(credentialsId:'DockerHub',passwordVariable:'DockerHubPassword', usernameVariable:'DockerHubUsername')]) {
-                    sh "docker login -u ${env.DockerHubUsername} -p ${env.DockerHubPassword}"
-                    sh "docker push mariammseddi12/angular-cicd:latest"
-                    sh "docker push mariammseddi12/spring-cicd:latest"
-                }    
+                echo 'Logging in to Docker Hub and pushing image...'
+                withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'DockerHubPassword', usernameVariable: 'DockerHubUsername')]) {
+                    sh 'echo $DockerHubPassword | docker login -u $DockerHubUsername --password-stdin'
+                    sh 'docker push mariammseddi12/angular-cicd:latest'
+                    sh 'docker push mariammseddi12/spring-cicd:latest'
+                }
             }
-        }
+}
         stage('Deploy'){
             steps {
                 sh 'docker-compose down && docker-compose up -d'
