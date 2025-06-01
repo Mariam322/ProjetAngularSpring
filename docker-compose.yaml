@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   web:
-    image: Mariam322/angular-cicd:latest
+    image: mariammseddi12/angular-cicd:latest
     container_name: cont-angular
     ports:
       - "4200:4200"
@@ -10,7 +10,7 @@ services:
       - back
 
   back:
-    image: Mariam322/spring-cicd:latest
+    image: mariammseddi12/spring-cicd:latest
     container_name: cont-spring
     ports:
       - "8070:8070"
